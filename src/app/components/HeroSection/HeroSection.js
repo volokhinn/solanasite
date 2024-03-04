@@ -1,6 +1,5 @@
 import styles from './HeroSection.module.scss';
 import Link from 'next/link';
-import background from '../../../../public/home/herobg.png';
 
 export const HeroSection = () => {
   return (
