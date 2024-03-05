@@ -6,13 +6,19 @@
         cursor: default;
         font-size: 17px;
         color: #848895;
+
+        transition: color .3s;
+
+        &:hover {
+            color: white;
+        }
     }
 
     &_menu {
         position: absolute;
         top: 40px;
         left: -40px;
-        background-color: black;
+        background-color: rgba(0,0,0,0.7);
         border-radius: 9px;
         padding: 20px;
         z-index: 1000;

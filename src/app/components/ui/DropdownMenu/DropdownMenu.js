@@ -76,7 +76,7 @@ const DropdownMenu = ({ label, options }) => {
           {options.map((option, index) => (
             <div key={index} onClick={handleItemClick}>
               {option.link ? (
-                <Link href={option.link}>
+                <Link href={option.link} className={styles.link}>
                   {option.label}
                 </Link>
               ) : (

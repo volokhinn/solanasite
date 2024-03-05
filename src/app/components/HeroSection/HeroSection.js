@@ -1,8 +1,28 @@
 import styles from './HeroSection.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
+
+import brave from '../../../../public/svg/partners/brave.svg'
+import circle from '../../../../public/svg/partners/circle.svg'
+import ds from '../../../../public/svg/partners/ds.svg'
+import google from '../../../../public/svg/partners/google.svg'
+import jump from '../../../../public/svg/partners/jump.svg'
+import lol from '../../../../public/svg/partners/lol.svg'
+import magic from '../../../../public/svg/partners/magic.svg'
+
+const partners = [
+  {icon: brave, alt: "Brave"},
+  {icon: circle, alt: "Circle"},
+  {icon: ds, alt: 'Discord'},
+  {icon: google, alt: 'Google'},
+  {icon: jump, alt: 'Jump'},
+  {icon: lol, alt: 'Lol'},
+  {icon: magic, alt: 'Magic'},
+]
 
 export const HeroSection = () => {
   return (
+    <>
     <div className={styles.main}>
       <h1>
         Powerful for developers.<br></br>Fast for everyone.
@@ -22,5 +42,15 @@ export const HeroSection = () => {
         </Link>
       </div>
     </div>
+    
+    <div className={styles.partners}>
+      <p>Powering tools and integrations from companies all around the world</p>
+        <div className={styles.partners_logo}>
+          {partners.map((item, i) => (
+            <Image key={i} src={item.icon} alt={item.alt} height={75} width={150} />
+          ))}
+        </div>
+    </div>
+    </>
   );
 };

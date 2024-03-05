@@ -69,3 +69,23 @@
         background-position: 450% 100%;
     }
 }
+
+.partners {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+
+    & p {
+        text-transform: uppercase;
+        color: #618ADC;
+    }
+
+    &_logo {
+        margin-top: 40px;
+        display: flex;
+        gap: 30px;
+    }
+}
