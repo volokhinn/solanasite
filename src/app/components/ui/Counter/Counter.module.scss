@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.count {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 131%;
+    font-size: 115px;
+    font-weight: 500;
+}
+
+.title {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #c4c4c4;
+}
