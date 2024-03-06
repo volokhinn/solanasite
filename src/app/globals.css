@@ -158,3 +158,8 @@ a {
       background-position: 450% 100%;
   }
 }
+
+.title {
+  font-size: 40px;
+  font-weight: 400;
+}

@@ -1,59 +1,68 @@
+'use client'
+import Image from 'next/image';
+import styles from './JoinGrid.module.scss';
+import { motion } from 'framer-motion';
 
-import Image from 'next/image'
+const joinData = [
+  { 
+    src: '/home/join/join1.jpg',
+    alt: 'join1',
+    titleColor: '#F087FF',
+    title: '11,000',
+    text: 'Solana Hacker House participants'
+  },
+  { 
+    src: '/home/join/join2.png',
+    alt: 'join2',
+    titleColor: null,
+    title: null,
+    text: null
+  },
+  { 
+    src: '/home/join/join3.png',
+    alt: 'join3',
+    titleColor: '#19FB9B',
+    title: '48,000',
+    text: 'Developers building during Solana Hackathons'
+  },
+  { 
+    src: '/home/join/join4.png',
+    alt: 'join4',
+    titleColor: null,
+    title: null,
+    text: null
+  },
+  { 
+    src: '/home/join/join5.png',
+    alt: 'join5',
+    titleColor: '#FFEB3B',
+    title: '3,800',
+    text: 'Solana Breakpoint 2022 attendees'
+  }
+];
 
-import join1 from '../../../../../public/home/join/join1.jpg'
-import join2 from '../../../../../public/home/join/join2.png'
-import join3 from '../../../../../public/home/join/join3.png'
-import join4 from '../../../../../public/home/join/join4.png'
-import join5 from '../../../../../public/home/join/join5.png'
-
-import styles from './JoinGrid.module.scss'
-
-export const JoinGrid = () => {
-  return (
-    <div className={styles.grid}>
-    <div className={styles.grid_tworows}>
-        <div className={styles.grid_tworows_card}>
-            <div className={styles.grid_tworows_title} style={{color: '#F087FF'}}>
-                11,000
-            </div>
-            <div className={styles.grid_tworows_text}>
-                Solana Hacker House participants
-            </div>
+const Card = ({ src, alt, titleColor, title, text }) => (
+  <div className={styles.grid_tworows}>
+    {title && (
+      <div className={styles.grid_tworows_card}>
+        <div className={styles.grid_tworows_title} style={{ color: titleColor }}>
+          {title}
         </div>
-        <Image src={join1} alt="join1" width="100%" height="100%" className={styles.img} />
-    </div>
-
-    <Image src={join2} alt="join2" width="100%" height="100%" className={styles.img} />
-
-    <div className={styles.grid_tworows}>
-        <div className={styles.grid_tworows_card}>
-            <div className={styles.grid_tworows_title} style={{color: '#19FB9B'}}>
-                48,000
-            </div>
-            <div className={styles.grid_tworows_text}>
-                Developers building during Solana Hackathons
-            </div>
+        <div className={styles.grid_tworows_text}>
+          {text}
         </div>
-        <Image src={join3} alt="join3" width="100%" height="100%" className={styles.img} />
-    </div>
+      </div>
+    )}
+    <Image src={src} alt={alt} width={1920} height={1080} className={styles.img} />
+  </div>
+);
 
-    <Image src={join4} alt="join4" width="100%" height="100%" className={styles.img} />
+export const JoinGrid = () => (
+  <motion.div className={styles.grid} whileInView={{opacity: 1}}>
+    {joinData.map(({ src, alt, titleColor, title, text }) => (
+      <Card key={src} src={src} alt={alt} titleColor={titleColor} title={title} text={text} />
+    ))}
+  </motion.div>
+);
 
-    <div className={styles.grid_tworows}>
-        <div className={styles.grid_tworows_card}>
-            <div className={styles.grid_tworows_title} style={{color: '#FFEB3B'}}>
-                3,800
-            </div>
-            <div className={styles.grid_tworows_text}>
-                Solana Breakpoint 2022 attendees
-            </div>
-        </div>
-        <Image src={join5} alt="join5" width="100%" height="100%" className={styles.img} />
-    </div>
-
-</div>
-  )
-}
-
-export default JoinGrid
+export default JoinGrid;

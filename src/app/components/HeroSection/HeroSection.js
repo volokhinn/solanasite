@@ -1,3 +1,5 @@
+'use client'
+import { motion } from 'framer-motion';
 import styles from './HeroSection.module.scss';
 import '@/app/globals.css';
 import Link from 'next/link';
@@ -25,32 +27,68 @@ export const HeroSection = () => {
   return (
     <>
     <div className={styles.main}>
-      <h1>
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         Powerful for developers.<br></br>Fast for everyone.
-      </h1>
+      </motion.h1>
 
-      <span className={styles.subtitle}>
+      <motion.span
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className={styles.subtitle}
+      >
         Bring blockchain to the people. Solana supports experiences <br></br> for power users, new
         consumers, and everyone in between.
-      </span>
+      </motion.span>
 
       <div className={styles.btngroup}>
         <Link href="/3">
-          <button className='btngradient'>Start building</button>
+          <motion.button
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className='btngradient'
+          >
+            Start building
+          </motion.button>
         </Link>
         <Link href="/3">
-          <button className='btnvoid'>Read Docs</button>
+          <motion.button
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className='btnvoid'
+          >
+            Read Docs
+          </motion.button>
         </Link>
       </div>
     </div>
     
     <div className={styles.partners}>
-      <p>Powering tools and integrations from companies all around the world</p>
-        <div className={styles.partners_logo}>
-          {partners.map((item, i) => (
-            <Image key={i} src={item.icon} alt={item.alt} height={75} width={150} />
-          ))}
-        </div>
+      <motion.p
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+      >
+        Powering tools and integrations from companies all around the world
+      </motion.p>
+      <div className={styles.partners_logo}>
+        {partners.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: i * 0.1 + 1 }}
+          >
+            <Image src={item.icon} alt={item.alt} height={75} width={150} />
+          </motion.div>
+        ))}
+      </div>
     </div>
     </>
   );
