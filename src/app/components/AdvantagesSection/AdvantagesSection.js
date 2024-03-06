@@ -11,7 +11,7 @@ export const AdvantagesSection = () => {
         <div className='container'>
           <div className={styles.counters}>
                 <div className={styles.left}>
-                    <h2>Join a community <br></br> of millions</h2>
+                    <h2>Join a community <br></br> of millions.</h2>
                 </div>
                 <div className={styles.right}>
                     <Counter count="11.5M+" title="Active accounts" bg="linear-gradient(228deg, #19fb9b 0%, #8c01fa 100%)" />

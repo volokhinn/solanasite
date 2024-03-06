@@ -1,4 +1,5 @@
 import styles from './HeroSection.module.scss';
+import '@/app/globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -35,10 +36,10 @@ export const HeroSection = () => {
 
       <div className={styles.btngroup}>
         <Link href="/3">
-          <button className={styles.btngradient}>Start building</button>
+          <button className='btngradient'>Start building</button>
         </Link>
         <Link href="/3">
-          <button className={styles.btnvoid}>Read Docs</button>
+          <button className='btnvoid'>Read Docs</button>
         </Link>
       </div>
     </div>
