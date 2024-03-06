@@ -128,7 +128,7 @@ export const BuildSection = () => {
             key={i}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: inViewLogos ? 1 : 0, y: inViewLogos ? 0 : 30 }}
-            transition={{ duration: 0.5, delay: i * 0.1 + 1 }}
+            transition={{ duration: 0.5, delay: i * 0.1 + 0.5 }}
           >
             <Image ref={refLogos} key={i} src={item} alt="logo" width="100%" height="100%" />
           </motion.div>

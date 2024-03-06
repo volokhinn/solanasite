@@ -12,6 +12,8 @@
 
 .left {
 
+    position: relative;
+
     & h2 {
         font-size: 38px;
         font-weight: 400;
@@ -23,6 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+    align-items: flex-end;
 }
 
 .column {
@@ -46,5 +49,16 @@
     &_right {
         display: flex;
         gap: 40px;
+    }
+}
+
+.counters {
+    &_column {
+        width: fit-content;
+        float: right;
+    }
+    
+    &_item {
+        width: fit-content;
     }
 }

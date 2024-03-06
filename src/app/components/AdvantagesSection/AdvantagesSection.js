@@ -6,39 +6,112 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Counter from '../ui/Counter/Counter';
 import AdvantagesCard from '../ui/AdvantagesCard/AdvantagesCard';
-import Title from '../ui/Title/Title';
+import { useState, useEffect } from 'react';
 
-export const AdvantagesSection = () => {
+const randomString = (length) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:",.<>?';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
+  export const AdvantagesSection = () => {
   const [refLeft, inViewLeft] = useInView({ triggerOnce: true });
   const [refRight, inViewRight] = useInView({ triggerOnce: true });
-  const [refCounters, inViewCounters] = useInView({ triggerOnce: true });
+  const [refCounter1, inViewCounter1] = useInView({ triggerOnce: true });
+  const [refCounter2, inViewCounter2] = useInView({ triggerOnce: true });
+  const [refCounter3, inViewCounter3] = useInView({ triggerOnce: true });
 
   const [refCard1, inViewCard1] = useInView({ triggerOnce: true });
   const [refCard2, inViewCard2] = useInView({ triggerOnce: true });
   const [refCard3, inViewCard3] = useInView({ triggerOnce: true });
   const [refCard4, inViewCard4] = useInView({ triggerOnce: true });
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [title, setTitle] = useState('Join a community of millions.');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.scrollY;
+      setScrollPosition(currentPosition);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrollPosition >= 1150 && !isScrolling && !scrolled) {
+      setIsScrolling(true);
+      const interval = setInterval(() => {
+        setTitle(randomString(title.length - 10));
+      }, 100); // Генерация рандомного текста
+
+      setScrolled(true);
+
+      setTimeout(() => {
+        clearInterval(interval);
+        setTitle('Adaptive for massive adoption');
+      }, 700); // Задержка перед сменой заголовка
+    } else if (scrollPosition < 1150 && scrolled) {
+      setIsScrolling(false);
+      setScrolled(false);
+      const interval = setInterval(() => {
+        setTitle(randomString(title.length - 10));
+      }, 100); // Генерация рандомного текста
+      setTimeout(() => {
+        clearInterval(interval);
+        setTitle('Join a community of millions.');
+      }, 700); // Задержка перед сменой заголовка
+    }
+  }, [scrollPosition, isScrolling, title, scrolled]);
+  
+
   return (
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.counters}>
-            <Title>Join a community <br /> of millions.</Title>
-          <div className={styles.right} ref={refRight}>
-            <motion.div
-              ref={refCounters}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: inViewCounters ? 1 : 0, y: inViewCounters ? 0 : 50 }}
-              transition={{ duration: 0.5, delay: 1 }}
-            >
-              <Counter count="11.5M+" title="Active accounts" bg="linear-gradient(228deg, #19fb9b 0%, #8c01fa 100%)" />
-              <Counter count="21.9M" title="NFTs minted" bg="linear-gradient(229deg, #0047ff 0%, #00bcd4 100%)" />
-              <Counter count="$0.00025" title="Average cost per transaction" bg="linear-gradient(222deg, #00ffbd 0%, #025b8c 100%)" />
-            </motion.div>
+          <div className={styles.left}>
+            <h2 className='stickytitle'>{title}</h2>
           </div>
-        </div>
+          <div className={styles.right} ref={refRight}>
+            <div className={styles.counters_column}>
+            <motion.div
+                className={styles.counters_item}
+                ref={refCounter1}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: inViewCounter1 ? 1 : 0, y: inViewCounter1 ? 0 : 50 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <Counter count="11.5M+" title="Active accounts" bg="linear-gradient(228deg, #19fb9b 0%, #8c01fa 100%)" />
+              </motion.div>
+              <motion.div
+                className={styles.counters_item}
+                ref={refCounter2}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: inViewCounter2 ? 1 : 0, y: inViewCounter2 ? 0 : 50 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <Counter count="21.9M" title="NFTs minted" bg="linear-gradient(229deg, #0047ff 0%, #00bcd4 100%)" />
+              </motion.div>
+              <motion.div
+                className={styles.counters_item}
+                ref={refCounter3}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: inViewCounter3 ? 1 : 0, y: inViewCounter3 ? 0 : 50 }}
+                transition={{ duration: 0.5, delay: 1 }}
+              >
+                <Counter count="$0.00025" title="Average cost per transaction" bg="linear-gradient(222deg, #00ffbd 0%, #025b8c 100%)" />
+              </motion.div>
+            </div>
 
-        <div className={styles.cards}>
-          <Title>Made for <br /> mass adoption.</Title>
+              <div className={styles.cards}>
           <div className={styles.cards_right}>
             <div className={styles.column_left}>
               <motion.div
@@ -99,6 +172,8 @@ export const AdvantagesSection = () => {
                 </AdvantagesCard>
               </motion.div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
