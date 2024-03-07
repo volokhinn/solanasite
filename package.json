@@ -11,12 +11,15 @@
   "dependencies": {
     "framer-motion": "^11.0.8",
     "js-sticky-element": "^1.1.1",
+    "motion": "^10.17.0",
     "next": "14.1.1",
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.8.1",
     "react-scroll-parallax": "^3.4.5",
     "react-scrollama": "^2.3.3",
+    "react-sticky": "^6.0.3",
+    "react-sticky-el": "^2.1.0",
     "sass": "^1.71.1"
   }
 }

@@ -7,9 +7,10 @@ import { useInView } from 'react-intersection-observer';
 import Counter from '../ui/Counter/Counter';
 import AdvantagesCard from '../ui/AdvantagesCard/AdvantagesCard';
 import { useState, useEffect } from 'react';
+import Sticky from 'react-sticky-el';
 
 const randomString = (length) => {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:",.<>?';
+  const characters = 'ABCDEFGHIJKLMNOPQRnopqrst123456789!@#$%^&*()-_=+[]{}|;:",.<>?';
   let result = '';
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -47,7 +48,7 @@ const randomString = (length) => {
   }, []);
 
   useEffect(() => {
-    if (scrollPosition >= 1150 && !isScrolling && !scrolled) {
+    if (scrollPosition >= 1250 && !isScrolling && !scrolled) {
       setIsScrolling(true);
       const interval = setInterval(() => {
         setTitle(randomString(title.length - 10));
@@ -57,9 +58,9 @@ const randomString = (length) => {
 
       setTimeout(() => {
         clearInterval(interval);
-        setTitle('Adaptive for massive adoption');
+        setTitle('Made for massive adoption.');
       }, 700); // Задержка перед сменой заголовка
-    } else if (scrollPosition < 1150 && scrolled) {
+    } else if (scrollPosition < 1250 && scrolled) {
       setIsScrolling(false);
       setScrolled(false);
       const interval = setInterval(() => {
@@ -77,8 +78,10 @@ const randomString = (length) => {
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.counters}>
-          <div className={styles.left}>
-            <h2 className='stickytitle'>{title}</h2>
+          <div className={`${styles.left} sticky`}>
+            <Sticky boundaryElement=".sticky" hideOnBoundaryHit={false} topOffset={-250} bottomOffset={200}>
+              <h2>{title}</h2>
+            </Sticky>
           </div>
           <div className={styles.right} ref={refRight}>
             <div className={styles.counters_column}>
