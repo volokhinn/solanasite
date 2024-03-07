@@ -14,10 +14,15 @@
         align-items: center;
         max-width: 1440px;
         width: 100%;
+        padding: 0 30px;
     }
 }
 
 .menu {
     display: flex;
     gap: 35px;
+}
+
+@media (max-width: 1440px) {
+    
 }

@@ -50,3 +50,66 @@
         gap: 30px;
     }
 }
+
+@media (max-width: 1440px) {
+    .main {
+        & h1 {
+            font-size: 48px;
+        }
+
+        & .subtitle {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .partners {
+        &_logo {
+            gap: 15px;
+
+            & img {
+                width: 80%;
+            }
+
+            & div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding-top: 200px;
+        padding-left: 60px;
+        padding-right: 60px;
+        background-position: unset;
+
+        & h1 {
+            font-size: 38px;
+        }
+
+        & .subtitle {
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+
+    .partners {
+        & p {
+            text-align: center;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

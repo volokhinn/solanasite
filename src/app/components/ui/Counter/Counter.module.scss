@@ -19,3 +19,24 @@
     text-transform: uppercase;
     color: #c4c4c4;
 }
+
+@media (max-width: 1440px) {
+    .count {
+        font-size: 80px;
+    }
+
+    .wrapper {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .count {
+        font-size: 58px;
+    }
+
+    .wrapper {
+        margin-bottom: 30px;
+        align-items: center;
+    }
+}

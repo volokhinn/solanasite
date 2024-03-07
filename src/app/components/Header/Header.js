@@ -3,6 +3,7 @@ import styles from './Header.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import DropdownMenu from '../ui/DropdownMenu/DropdownMenu'
+import '@/app/globals.css'
 
 const options1 = [
     { label: 'Опция 1', link: '/option1' },

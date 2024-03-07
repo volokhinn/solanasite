@@ -26,7 +26,7 @@ const partners = [
 export const HeroSection = () => {
   return (
     <>
-    <div className={styles.main}>
+    <section className={styles.main}>
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -67,9 +67,9 @@ export const HeroSection = () => {
           </motion.button>
         </Link>
       </div>
-    </div>
+    </section>
     
-    <div className={styles.partners}>
+    <section className={styles.partners}>
       <motion.p
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export const HeroSection = () => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
     </>
   );
 };

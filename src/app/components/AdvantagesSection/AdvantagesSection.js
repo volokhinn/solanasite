@@ -8,6 +8,7 @@ import Counter from '../ui/Counter/Counter';
 import AdvantagesCard from '../ui/AdvantagesCard/AdvantagesCard';
 import { useState, useEffect } from 'react';
 import Sticky from 'react-sticky-el';
+import Title from '../ui/Title/Title';
 
 const randomString = (length) => {
   const characters = 'ABCDEFGHIJKLMNOPQRnopqrst123456789!@#$%^&*()-_=+[]{}|;:",.<>?';
@@ -74,15 +75,29 @@ const randomString = (length) => {
   }, [scrollPosition, isScrolling, title, scrolled]);
   
 
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 940;
+  useEffect(() => {
+   const handleResizeWindow = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.counters}>
-          <div className={`${styles.left} sticky`}>
-            <Sticky boundaryElement=".sticky" hideOnBoundaryHit={false} topOffset={-250} bottomOffset={200}>
-              <h2>{title}</h2>
-            </Sticky>
-          </div>
+          {width > breakpoint ? (
+            <div className={`${styles.left} sticky`}>
+              <Sticky boundaryElement=".sticky" hideOnBoundaryHit={false} topOffset={-250} bottomOffset={200}>
+                <h2>{title}</h2>
+              </Sticky>
+            </div>
+          ) : (
+            <div className={styles.mobiletitle}><Title>Join a community of millions.</Title></div>
+          )}
           <div className={styles.right} ref={refRight}>
             <div className={styles.counters_column}>
             <motion.div
@@ -113,7 +128,7 @@ const randomString = (length) => {
                 <Counter count="$0.00025" title="Average cost per transaction" bg="linear-gradient(222deg, #00ffbd 0%, #025b8c 100%)" />
               </motion.div>
             </div>
-
+            {width < breakpoint && (<div className={styles.mobiletitle}><Title>Made for massive adoption.</Title></div>)}
               <div className={styles.cards}>
           <div className={styles.cards_right}>
             <div className={styles.column_left}>

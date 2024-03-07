@@ -81,3 +81,40 @@
     border-radius: 15px;
     margin-top: 20px;
 }
+
+@media (max-width: 1440px) {
+    .text {
+        font-size: 18px;
+    }
+
+    .link {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 840px) {
+    .titlerow {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+    }
+
+    .slider {
+        flex-direction: column-reverse;
+        height: fit-content;
+
+        &_right {
+            padding-bottom: 30px;
+            text-align: center;
+            width: 100%;
+            align-items: center;
+        }
+    }
+
+    .logos {
+        padding: 15px 30px;
+    }
+}
